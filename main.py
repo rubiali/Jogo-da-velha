@@ -22,6 +22,20 @@ def empty_struture():
     print("-"*17)
     line3 = "  g  |  h  |  i  "
     print(line3)
+
+def type_difficulty():
+    while True:
+        print(f"{blue}(~){reset} Vamos jogar jogo da velha?\n")
+        difficulty = int(input(f"{green}(~){reset} Selecione a dificuldade: \n\n(1) - {light_green}Fácil{reset}\n(2) - {blue}Médio{reset}\n(3) - {red}Difícil{reset}\n\n{blue}(i){reset} Sua escolha: "))
+        if difficulty > 0 and difficulty <= 3:
+            sleep(0.5)
+            break
+        else:
+            print(f"\n{red}[ERRO]{reset} Por favor, selecione uma opção válida...")
+            sleep(2)
+            clr()
+
+    return difficulty
     
 def time_player(moves_player, moves_bot):
     while True:
@@ -478,41 +492,31 @@ green = Fore.GREEN
 yellow = Fore.YELLOW
 reset = Fore.RESET
 
-#Inicio
+#Cor
 init()
 clr()
-while True:
-    print(f"{blue}(~){reset} Vamos jogar jogo da velha?\n")
-    difficulty = int(input(f"{green}(~){reset} Selecione a dificuldade: \n\n(1) - {light_green}Fácil{reset}\n(2) - {blue}Médio{reset}\n(3) - {red}Difícil{reset}\n\n{blue}(i){reset} Sua escolha: "))
-    if difficulty > 0 and difficulty <= 3:
-        sleep(0.5)
-        break
-    else:
-        print(f"\n{red}[ERRO]{reset} Por favor, selecione uma opção válida...")
-        sleep(2)
-        clr()
-
-#Globais
-line1 = line2 = line3 = ""
-c_loss = c_win = 0
-clr()
-print(f"{light_blue}(#){reset} Jogo da velha {light_blue}(#){reset} - Placar: {c_win}x{c_loss}\n")
-empty_struture()
-moves_player = []
-moves_bot = []
-mode = random.randint(0, 1)
-
-if mode == 0: # Jogador ser X ou O aleatoriamente
-    mode_player = f'{red}X{reset}'
-    mode_bot = f'{blue}O{reset}'
-    turn = True
-else:
-    mode_player = f'{red}O{reset}'
-    mode_bot = f'{blue}X{reset}'
-    turn = False
     
 #Programa
 if __name__ == '__main__':
+    difficulty = type_difficulty()
+    #Globais
+    line1 = line2 = line3 = ""
+    c_loss = c_win = 0
+    clr()
+    print(f"{light_blue}(#){reset} Jogo da velha {light_blue}(#){reset} - Placar: {c_win}x{c_loss}\n")
+    empty_struture()
+    moves_player = []
+    moves_bot = []
+    mode = random.randint(0, 1)
+
+    if mode == 0: # Jogador ser X ou O aleatoriamente
+        mode_player = f'{red}X{reset}'
+        mode_bot = f'{blue}O{reset}'
+        turn = True
+    else:
+        mode_player = f'{red}O{reset}'
+        mode_bot = f'{blue}X{reset}'
+        turn = False
     while True:
         while True:
             if turn:  
