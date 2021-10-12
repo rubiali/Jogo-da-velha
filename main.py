@@ -161,9 +161,55 @@ def time_bot(moves_bot, moves_player, difficulty, mode_bot):
                                 if 'd' in move_player:
                                     move_bot = 'i'
 
+                        #Quina A
+                        if not 'c' in (moves_bot + moves_player):
+                            if 'a' in moves_bot and 'e' in moves_bot and 'd' in moves_player:
+                                move_bot = 'c' 
+
+                        
+                        if not 'g' in (moves_bot + moves_player):
+                            if 'a' in moves_bot and 'e' in moves_bot and 'b' in moves_player:
+                                move_bot = 'g' 
+
+                        #Quina C
+                        if not 'i' in (moves_bot + moves_player):
+                            if 'c' in moves_bot and 'e' in moves_bot and 'b' in moves_player:
+                                move_bot = 'i' 
+
+                        
+                        if not 'a' in (moves_bot + moves_player):
+                            if 'c' in moves_bot and 'e' in moves_bot and 'f' in moves_player:
+                                move_bot = 'a' 
+
+                        #Quina G
+                        if not 'i' in (moves_bot + moves_player):
+                            if 'g' in moves_bot and 'e' in moves_bot and 'd' in moves_player:
+                                move_bot = 'i' 
+
+                        
+                        if not 'a' in (moves_bot + moves_player):
+                            if 'g' in moves_bot and 'e' in moves_bot and 'h' in moves_player:
+                                move_bot = 'a' 
+
+                        #Quina I
+                        if not 'c' in (moves_bot + moves_player):
+                            if 'i' in moves_bot and 'e' in moves_bot and 'h' in moves_player:
+                                move_bot = 'c'
+
+                        
+                        if not 'g' in (moves_bot + moves_player):
+                            if 'i' in moves_bot and 'e' in moves_bot and 'f' in moves_player:
+                                move_bot = 'g' 
+
                     else: #Estratégia dos cantos
                         corners = ['a', 'c', 'g', 'i']
                         game_win = False
+
+                        c_corners = 0
+                        for move in moves_bot:
+                            if move in corners:
+                                c_corners +=1
+
                         for move in moves_player:
                             if move in corners:
                                 game_win = True
@@ -175,6 +221,27 @@ def time_bot(moves_bot, moves_player, difficulty, mode_bot):
                                     break
                         else:
                             move_bot = ''
+                        
+                        if c_corners < 2:
+                            #Quina A
+                            if not 'e' in (moves_bot + moves_player):
+                                if 'a' in moves_bot and 'd' in moves_player or 'a' in moves_bot and 'b' in moves_player:
+                                    move_bot = 'e'
+
+                            #Quina C
+                            if not 'e' in (moves_bot + moves_player):
+                                if 'c' in moves_bot and 'b' in moves_player or 'c' in moves_bot and 'f' in moves_player:
+                                    move_bot = 'e'
+
+                            #Quina G
+                            if not 'e' in (moves_bot + moves_player):
+                                if 'g' in moves_bot and 'd' in moves_player or 'g' in moves_bot and 'h' in moves_player:
+                                    move_bot = 'e'
+                            
+                            #Quina I
+                            if not 'e' in (moves_bot + moves_player):
+                                if 'i' in moves_bot and 'f' in moves_player or 'i' in moves_bot and 'h' in moves_player:
+                                    move_bot = 'e'
                 else:
                     move_bot = random.choice(possible_start)
 
@@ -491,8 +558,6 @@ light_red = Fore.LIGHTRED_EX
 green = Fore.GREEN
 yellow = Fore.YELLOW
 reset = Fore.RESET
-
-#Cor
 init()
 clr()
     
