@@ -4,6 +4,7 @@ from colorama import init, Fore
 import os
 from time import sleep
 import random
+import pyfiglet
 
 #Funções:
 def clr():
@@ -11,6 +12,12 @@ def clr():
         os.system("cls")
     else:
         os.system("clear")
+
+def banner():
+    f = pyfiglet.Figlet(font="cybermedium")
+    banner = f.renderText('Jogo da velha')
+    print(f'{red}{banner}{reset}')
+    print(f'Author: Gabriel Rubiali Gomes{reset}\n')
 
 def empty_struture():
     global line1, line2, line3
@@ -25,7 +32,7 @@ def empty_struture():
 
 def type_difficulty():
     while True:
-        print(f"{blue}(~){reset} Vamos jogar jogo da velha?\n")
+        banner()
         difficulty = int(input(f"{green}(~){reset} Selecione a dificuldade: \n\n(1) - {light_green}Fácil{reset}\n(2) - {blue}Médio{reset}\n(3) - {red}Difícil{reset}\n\n{blue}(i){reset} Sua escolha: "))
         if difficulty > 0 and difficulty <= 3:
             sleep(0.5)
@@ -582,6 +589,7 @@ if __name__ == '__main__':
         mode_player = f'{red}O{reset}'
         mode_bot = f'{blue}X{reset}'
         turn = False
+
     while True:
         while True:
             if turn:  
