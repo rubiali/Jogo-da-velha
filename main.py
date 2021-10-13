@@ -31,16 +31,20 @@ def empty_struture():
     print(line3)
 
 def type_difficulty():
+    banner()
+    print((f"{green}(~){reset} Selecione a dificuldade: \n\n(1) - {light_green}Fácil{reset}\n(2) - {blue}Médio{reset}\n(3) - {red}Difícil{reset}\n"))
     while True:
-        banner()
-        difficulty = int(input(f"{green}(~){reset} Selecione a dificuldade: \n\n(1) - {light_green}Fácil{reset}\n(2) - {blue}Médio{reset}\n(3) - {red}Difícil{reset}\n\n{blue}(i){reset} Sua escolha: "))
-        if difficulty > 0 and difficulty <= 3:
-            sleep(0.5)
-            break
-        else:
-            print(f"\n{red}[ERRO]{reset} Por favor, selecione uma opção válida...")
-            sleep(2)
-            clr()
+        try:
+            difficulty = int(input(f"\n{blue}(i){reset} Sua escolha: "))
+            if difficulty > 0 and difficulty <= 3:
+                sleep(0.5)
+                break
+            else:
+                print(f"\n{red}[ERRO]{reset} Por favor, selecione uma opção válida...")
+                sleep(1)
+        except ValueError:
+            print(f"\n{red}[ERRO]{reset} Por favor digíte um número entre 1 a 3.\n")
+            sleep(1)
 
     return difficulty
     
