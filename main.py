@@ -17,7 +17,7 @@ def banner():
     f = pyfiglet.Figlet(font="cybermedium")
     banner = f.renderText('Jogo da velha')
     print(f'{red}{banner}{reset}')
-    print(f'Author: Gabriel Rubiali Gomes{reset}\n')
+    print(f'{green}Author{reset}: Gabriel Rubiali Gomes{reset}\n')
 
 def empty_struture():
     global line1, line2, line3
@@ -32,7 +32,7 @@ def empty_struture():
 
 def type_difficulty():
     banner()
-    print((f"{green}(~){reset} Selecione a dificuldade: \n\n(1) - {light_green}Fácil{reset}\n(2) - {blue}Médio{reset}\n(3) - {red}Difícil{reset}\n"))
+    print((f"{green}(~){reset} Selecione a dificuldade: \n\n(1) - {light_green}Fácil{reset}\n(2) - {blue}Médio{reset}\n(3) - {red}Difícil{reset}"))
     while True:
         try:
             difficulty = int(input(f"\n{blue}(i){reset} Sua escolha: "))
@@ -152,10 +152,8 @@ def time_bot(moves_bot, moves_player, difficulty, mode_bot):
                         for move in moves_player:
                             if move in possible_start:
                                 game_draw = True
-                        if game_draw:
-                            move_bot = ''
 
-                        else: #Game win
+                        if not game_draw: #Game win
                             if not 'h' in move_bot and not 'h' in move_player:
                                 if 'b' in move_player:
                                     move_bot = 'h'
@@ -505,7 +503,7 @@ def content_struture(moves_bot, moves_player, mode_bot, mode_player, turn):
         elif move in line3:
             line3 = line3.replace(move, mode_bot)
 
-    #Mostrar tabuleiro
+    #Atualizar tabuleiro
     print(line1)
     print("-" * 17)
     print(line2)
